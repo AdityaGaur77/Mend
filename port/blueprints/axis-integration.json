@@ -1,0 +1,29 @@
+{
+  "identifier": "mendAxisIntegration",
+  "title": "Mend Axis Integration",
+  "icon": "Data",
+  "description": "Versioned integration state for exactly one X, Y, or Z intelligence axis.",
+  "schema": {
+    "properties": {
+      "axis": { "title": "Axis", "type": "string", "enum": ["X", "Y", "Z"] },
+      "question": { "title": "Axis question", "type": "string" },
+      "source_name": { "title": "Source", "type": "string" },
+      "source_kind": { "title": "Source kind", "type": "string", "enum": ["web", "api", "dataset"] },
+      "provider": { "title": "Acquisition provider", "type": "string" },
+      "artifact_path": { "title": "Versioned adapter", "type": "string" },
+      "factory_version": { "title": "Factory version", "type": "string" },
+      "status": { "title": "Status", "type": "string", "enum": ["planned", "building", "healthy", "failed", "repair_required", "repairing"] },
+      "last_record_count": { "title": "Last record count", "type": "number" },
+      "last_run_id": { "title": "Last run ID", "type": "string" },
+      "evidence_required": { "title": "Evidence required", "type": "boolean" }
+    },
+    "required": ["axis", "question", "source_name", "source_kind", "provider", "artifact_path", "factory_version", "status", "evidence_required"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {
+    "project": { "title": "Project", "target": "zdProject", "required": true, "many": false },
+    "brief": { "title": "Scientific brief", "target": "mendScientificBrief", "required": true, "many": false }
+  }
+}

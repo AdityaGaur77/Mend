@@ -1,0 +1,34 @@
+{
+  "identifier": "zdWorkflowRun",
+  "title": "Delivery Workflow Run",
+  "icon": "Deployment",
+  "description": "One auditable brief-to-release execution, independent of the product being delivered.",
+  "schema": {
+    "properties": {
+      "brief": { "title": "Brief", "type": "object" },
+      "requirement_revision": { "title": "Requirement revision", "type": "number" },
+      "plan": { "title": "Plan", "type": "object" },
+      "plan_hash": { "title": "Plan hash", "type": "string" },
+      "status": {
+        "title": "Status",
+        "type": "string",
+        "enum": ["planning", "building", "testing", "retry_pending", "awaiting_approval", "rejected", "releasing", "released", "escalated"]
+      },
+      "failed_stage": { "title": "Failed stage", "type": "string" },
+      "retry_count": { "title": "Retry count", "type": "number" },
+      "max_retries": { "title": "Maximum retries", "type": "number" },
+      "attempts": { "title": "Stage attempts", "type": "object" },
+      "outputs": { "title": "Outputs", "type": "object" },
+      "audit": { "title": "Audit events", "type": "array", "items": { "type": "object" } },
+      "correlation_id": { "title": "Correlation ID", "type": "string" }
+    },
+    "required": ["brief", "requirement_revision", "plan", "plan_hash", "status", "retry_count", "max_retries", "attempts", "audit", "correlation_id"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {
+    "project": { "title": "Project", "target": "zdProject", "required": true, "many": false },
+    "scientific_brief": { "title": "Scientific brief", "target": "mendScientificBrief", "required": false, "many": false }
+  }
+}

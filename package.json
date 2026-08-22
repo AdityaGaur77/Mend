@@ -1,0 +1,26 @@
+{
+  "name": "mend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A self-healing intelligence factory: a website built to break itself, and a repair loop that derives the fix from the page.",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test",
+    "mend:heal": "node scripts/mend-heal.mjs",
+    "site:build": "node mend/scripts/build.mjs",
+    "site:activate": "node mend/scripts/activate.mjs",
+    "site:serve": "node mend/scripts/serve.mjs",
+    "site:test": "node --test mend/test/*.test.mjs"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/api-logs": "^0.221.0",
+    "@opentelemetry/exporter-logs-otlp-http": "^0.221.0",
+    "@opentelemetry/exporter-metrics-otlp-http": "^0.221.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.221.0",
+    "@opentelemetry/resources": "^2.10.0",
+    "@opentelemetry/sdk-logs": "^0.221.0",
+    "@opentelemetry/sdk-metrics": "^2.10.0",
+    "@opentelemetry/sdk-trace-base": "^2.10.0"
+  }
+}

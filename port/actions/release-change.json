@@ -1,0 +1,34 @@
+{
+  "identifier": "zd_release_change",
+  "title": "Approve and release change",
+  "icon": "Deployment",
+  "description": "Rebuilds and verifies the recorded plan, then performs the release simulation. Port rejection prevents backend invocation.",
+  "trigger": {
+    "type": "self-service",
+    "operation": "DAY-2",
+    "blueprintIdentifier": "zdWorkflowRun",
+    "userInputs": { "properties": {}, "required": [], "order": [] }
+  },
+  "invocationMethod": {
+    "type": "INTEGRATION_ACTION",
+    "installationId": "github-ocean",
+    "integrationActionType": "dispatch_workflow",
+    "integrationActionExecutionProperties": {
+      "org": "REPLACE_WITH_GITHUB_ORG",
+      "repo": "REPLACE_WITH_GITHUB_REPO",
+      "workflow": "port-delivery.yml",
+      "workflowInputs": {
+        "operation": "release",
+        "port_run_id": "{{ .run.id }}",
+        "workflow_run_id": "{{ .entity.identifier }}",
+        "brief_json": "{{ .entity.properties.brief | tojson }}",
+        "plan_hash": "{{ .entity.properties.plan_hash }}",
+        "state_json": "{{ .entity.properties | tojson }}"
+      },
+      "reportWorkflowStatus": true
+    }
+  },
+  "requiredApproval": true,
+  "approvalNotification": { "type": "none" },
+  "allowAnyoneToViewRuns": true
+}

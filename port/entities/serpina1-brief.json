@@ -1,0 +1,14 @@
+{
+  "identifier": "serpina1-aatd-xyz",
+  "title": "SERPINA1/AATD X/Y/Z intelligence",
+  "properties": {
+    "disease": "Alpha-1 Antitrypsin Deficiency (AATD)",
+    "target": "SERPINA1 / Alpha-1 Antitrypsin",
+    "question": "Determine current therapeutic pipeline activity, available experimental structural evidence, and visible patent/IP activity.",
+    "axes": ["X", "Y", "Z"],
+    "scope_constraints": ["One disease", "One target", "One source per axis", "Do not claim freedom to operate", "Preserve source evidence"],
+    "acceptance_criteria": ["X, Y, and Z validate independently", "Every important result retains source evidence", "Release and repair require human approval"],
+    "status": "active"
+  },
+  "relations": { "project": "zero-downtime-factory" }
+}

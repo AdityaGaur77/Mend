@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="generator" content="Meridian Web 3.0.0">
+  <meta name="description" content="How Mend validates, repairs, and releases neglected-disease research data.">
+  <title>How Mend works — Meridian Therapeutics</title>
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body class="page-about">
+  <header class="masthead">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__brand" href="../">Meridian<span class="nav__brand-mark">Therapeutics</span></a>
+        <ul class="nav__links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../pipeline/" class="nav__link--current">Pipeline</a></li>
+          <li><a href="../mend/">How Mend works</a></li>
+          <li><a href="../control/">Control room</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero about-hero">
+      <p class="eyebrow">A self-healing data factory</p>
+      <h1>Keep a research landscape alive after the web changes.</h1>
+      <p class="hero__lede">Drug-program evidence for neglected and rare diseases often lives on pages,
+      not APIs. Mend turns those fragile sources into a versioned, validated research view and makes
+      failure, repair, approval, and release visible.</p>
+      <p><a class="button" href="./../control/">Watch the controlled break</a></p>
+    </section>
+
+    <section class="panel about-grid">
+      <div>
+        <h2>The problem</h2>
+        <p>Web pages change without notice. A scraper can return rows that look fine while one important
+        field has quietly gone null, or an integration can return nothing at all. Mend treats external
+        evidence as untrusted until it passes a contract for shape, completeness, and volume.</p>
+      </div>
+      <div>
+        <h2>The promise</h2>
+        <p>A failed run is isolated and quarantined. The last trustworthy release stays available while
+        a bounded repair is proposed, tested, reviewed by a human, and released only after verification.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>One target, three evidence axes</h2>
+      <p>Mend joins the questions that decide whether a research opportunity is worth pursuing. Scores are
+      signals with explicit rules, not legal or investment conclusions.</p>
+      <div class="axis-grid">
+        <article class="axis-card"><span class="axis-card__key">X</span><h3>Pipeline activity</h3><p>Is anyone building it? Programmes, development stage, organizations, new entrants, and phase movement.</p><small>Pipeline pages · Open Targets · ChEMBL · trial registries</small></article>
+        <article class="axis-card"><span class="axis-card__key">Y</span><h3>Structure quality</h3><p>Is the science ready? Disease-state form, resolution, experimental method, human relevance, and ligand or partner context.</p><small>EMDB · RCSB PDB · UniProt</small></article>
+        <article class="axis-card"><span class="axis-card__key">Z</span><h3>Freedom to act</h3><p>Is the space open? Patent activity, assignees, dependencies, expiry signals, and open or nonprofit participation.</p><small>PatentsView · Lens · FDA books · trial collaborators</small></article>
+      </div>
+      <p class="panel__note"><strong>Map interpretation:</strong> high X/low Y means “racing blind”; low X/high Y/high Z is an “open opportunity”; high X/high Y/low Z is “solved and crowded.” Z is an IP activity signal, never a freedom-to-operate opinion.</p>
+    </section>
+
+    <section class="panel">
+      <h2>The factory loop</h2>
+      <ol class="factory-steps">
+        <li><strong>Discover and scrape</strong><span>Collect evidence from allowed public sources through replaceable adapters.</span></li>
+        <li><strong>Normalize and verify</strong><span>Apply shared contracts, null-rate gates, row-count checks, and source evidence requirements.</span></li>
+        <li><strong>Quarantine on failure</strong><span>Keep bad output out of the release and preserve the last-known-good snapshot.</span></li>
+        <li><strong>Repair and approve</strong><span>Generate a bounded repair, retest it against the contract, and require human approval.</span></li>
+        <li><strong>Diff, release, observe</strong><span>Publish only verified data and record what changed, why, and which run produced it.</span></li>
+      </ol>
+    </section>
+
+    <section class="panel about-grid">
+      <div>
+        <h2>What the tools contribute</h2>
+        <ul class="plain-list"><li><strong>Scraper Studio:</strong> reusable extraction and repair previews.</li><li><strong>SigNoz:</strong> traces, validation failures, repair events, durations, and row counts.</li><li><strong>Port:</strong> source context, repair proposals, approval, risk, and release decisions.</li><li><strong>GitHub:</strong> versioned contracts, adapters, tests, and release history.</li></ul>
+      </div>
+      <div>
+        <h2>What this demo proves</h2>
+        <ul class="plain-list"><li><strong>v1:</strong> an empty-result outage is visible and routed to repair.</li><li><strong>v2:</strong> selector drift can be silent even when row counts stay flat.</li><li><strong>v3:</strong> a schema change can require escalation, not a guessed fix.</li><li><strong>v4:</strong> the original healthy release can be restored.</li></ul>
+      </div>
+    </section>
+
+    <section class="panel about-limits">
+      <h2>Honest limits</h2>
+      <p>Mend does not claim that rare diseases have no data, that a quiet company page is healthy, or that a Z score is legal advice. Freshness stamps and independent cross-checks are needed to detect sources that stop updating. Enrichment gaps are marked unknown rather than scored as zero, and illustrative map positions are labeled until enrichment runs.</p>
+      <p class="panel__note">This site is a fictional, noindex demonstration. The underlying research view is intended to show the factory’s contracts and recovery behavior, not to provide medical, scientific, investment, or legal advice.</p>
+    </section>
+
+    <section class="panel references">
+      <h2>Further reading</h2>
+      <ul class="plain-list"><li><a href="https://arxiv.org/abs/2508.16571" target="_blank" rel="noopener">LLM-Based Agents for Competitive Landscape Mapping in Drug Asset Due Diligence</a></li><li><a href="https://platform-docs.opentargets.org/target/tractability" target="_blank" rel="noopener">Open Targets tractability</a></li><li><a href="https://www.ebi.ac.uk/emdb/" target="_blank" rel="noopener">EMDB</a> · <a href="https://www.rcsb.org/" target="_blank" rel="noopener">RCSB PDB</a> · <a href="https://www.uniprot.org/" target="_blank" rel="noopener">UniProt</a></li></ul>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="disclosure"><strong>Meridian Therapeutics is a fictional company created to test data pipelines.</strong>
+      No program, compound, trial, or result on this site is real. It exists so that a scraper can be broken
+      on purpose and repaired under observation.</p>
+      <p class="colophon">Basel, Switzerland · Site built with Meridian Web 3.0.0</p>
+    </div>
+  </footer>
+</body>
+</html>

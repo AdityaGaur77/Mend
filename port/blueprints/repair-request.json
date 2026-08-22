@@ -1,0 +1,33 @@
+{
+  "identifier": "mendRepairRequest",
+  "title": "Mend Repair Request",
+  "icon": "Service",
+  "description": "A quarantined integration failure and its governed request for generated repair software.",
+  "schema": {
+    "properties": {
+      "axis": { "title": "Affected axis", "type": "string", "enum": ["X", "Y", "Z"] },
+      "source_name": { "title": "Affected source", "type": "string" },
+      "factory_version": { "title": "Active factory version", "type": "string" },
+      "failed_run_id": { "title": "Failed run ID", "type": "string" },
+      "previous_healthy_count": { "title": "Previous healthy count", "type": "number" },
+      "current_count": { "title": "Current count", "type": "number" },
+      "validation_reason": { "title": "Validation reason", "type": "string" },
+      "failed_dataset_quarantined": { "title": "Failed dataset quarantined", "type": "boolean" },
+      "previous_data_remains_active": { "title": "Previous healthy data remains active", "type": "boolean" },
+      "required_artifacts": { "title": "Required repair artifacts", "type": "array", "items": { "type": "string" } },
+      "status": { "title": "Status", "type": "string", "enum": ["REPAIR_REQUIRED", "BUILDING", "AWAITING_APPROVAL", "APPROVED", "REJECTED", "RECOVERED"] },
+      "detected_at": { "title": "Detected at", "type": "string", "format": "date-time" },
+      "audit": { "title": "Repair audit", "type": "array", "items": { "type": "object" } }
+    },
+    "required": ["axis", "source_name", "factory_version", "failed_run_id", "previous_healthy_count", "current_count", "validation_reason", "failed_dataset_quarantined", "previous_data_remains_active", "required_artifacts", "status", "audit"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {
+    "brief": { "title": "Scientific brief", "target": "mendScientificBrief", "required": true, "many": false },
+    "integration": { "title": "Failed integration", "target": "mendAxisIntegration", "required": true, "many": false },
+    "failed_run": { "title": "Failed workflow run", "target": "zdWorkflowRun", "required": true, "many": false },
+    "repair_change": { "title": "Generated repair change", "target": "mendSoftwareChange", "required": false, "many": false }
+  }
+}

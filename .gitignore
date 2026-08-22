@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+node_modules/
+artifacts/
+tmp/
+observability/signoz/pours/
+observability/signoz/casting.yaml.lock
+.DS_Store
+

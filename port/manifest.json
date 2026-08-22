@@ -1,0 +1,29 @@
+{
+  "apiVersion": "zero-downtime-factory/v1",
+  "blueprints": [
+    "blueprints/project.json",
+    "blueprints/service.json",
+    "blueprints/scientific-brief.json",
+    "blueprints/axis-integration.json",
+    "blueprints/workflow-run.json",
+    "blueprints/software-change.json",
+    "blueprints/repair-request.json",
+    "blueprints/decision.json"
+  ],
+  "entities": [
+    { "blueprint": "zdProject", "file": "entities/project.json" },
+    { "blueprint": "zdService", "file": "entities/services.json" },
+    { "blueprint": "mendScientificBrief", "file": "entities/serpina1-brief.json" },
+    { "blueprint": "mendAxisIntegration", "file": "entities/xyz-integrations.json" }
+  ],
+  "actions": [
+    "actions/submit-change.json",
+    "actions/release-change.json",
+    "actions/retry-run.json"
+  ],
+  "examples": [
+    { "blueprint": "mendSoftwareChange", "file": "../fixtures/port/software-change-v1.json" },
+    { "blueprint": "mendRepairRequest", "file": "../fixtures/port/x-repair-request.json" },
+    { "blueprint": "zdDecision", "file": "../fixtures/port/repair-approval.json" }
+  ]
+}

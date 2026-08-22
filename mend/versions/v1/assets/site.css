@@ -1,0 +1,125 @@
+/* Meridian Web 2.3.1 — the stylesheet the site shipped with in 2022 and never revisited. */
+:root {
+  --ink: #16232e;
+  --ink-soft: #56676f;
+  --rule: #dbe3e8;
+  --paper: #ffffff;
+  --wash: #f4f7f9;
+  --accent: #0f6470;
+  --accent-soft: #e3f0f1;
+  --warn: #8a5a12;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font: 16px/1.6 "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+a { color: var(--accent); }
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.01em; }
+h1 { font-size: 2.1rem; margin: 0 0 .4em; }
+h2 { font-size: 1.35rem; margin: 0 0 .6em; }
+
+.masthead { border-bottom: 1px solid var(--rule); background: var(--wash); }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; gap: 24px; flex-wrap: wrap; }
+.nav__brand { font-size: 1.15rem; font-weight: 700; text-decoration: none; color: var(--ink); letter-spacing: -0.02em; }
+.nav__brand-mark { color: var(--accent); font-weight: 400; margin-left: .4em; }
+.nav__links { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font-family: system-ui, sans-serif; font-size: .92rem; }
+.nav__links a { text-decoration: none; color: var(--ink-soft); }
+.nav__links a:hover, .nav__link--current { color: var(--accent); }
+
+main { padding: 40px 0 64px; }
+.hero { max-width: 46rem; margin-bottom: 40px; }
+.hero__lede { font-size: 1.1rem; color: var(--ink-soft); }
+.button {
+  display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+  padding: 10px 20px; border-radius: 3px; font-family: system-ui, sans-serif; font-size: .92rem;
+}
+.panel { border-top: 1px solid var(--rule); padding-top: 28px; margin-top: 32px; }
+.panel__note { color: var(--ink-soft); font-size: .92rem; }
+.stat-row { list-style: none; display: flex; flex-wrap: wrap; gap: 40px; padding: 0; margin: 0 0 12px; }
+.stat { display: flex; flex-direction: column; }
+.stat__num { font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.stat__label { font-family: system-ui, sans-serif; font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); }
+.teaser-list { list-style: none; padding: 0; margin: 0; }
+.teaser-list a { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); flex-wrap: wrap; }
+.teaser-list span { color: var(--ink-soft); flex: 1; }
+.teaser-list em { font-style: normal; color: var(--accent); font-family: system-ui, sans-serif; font-size: .88rem; }
+
+.pipeline-intro { max-width: 46rem; margin-bottom: 28px; }
+.pipeline { width: 100%; border-collapse: collapse; font-family: system-ui, sans-serif; font-size: .9rem; }
+.pipeline th, .pipeline td { text-align: left; padding: 11px 14px 11px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.pipeline thead th { font-size: .76rem; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-soft); border-bottom: 2px solid var(--ink); }
+.pipeline .program-code a { font-weight: 600; text-decoration: none; }
+.pipeline .phase { font-weight: 600; }
+.pipeline .compound { font-style: italic; color: var(--ink-soft); }
+.pipeline tbody tr:hover { background: var(--wash); }
+
+.crumb { font-family: system-ui, sans-serif; font-size: .85rem; color: var(--ink-soft); }
+.program-detail { max-width: 44rem; }
+.program-detail__lede { font-size: 1.06rem; color: var(--ink-soft); }
+.facts { display: grid; grid-template-columns: 12rem 1fr; gap: 0; margin: 28px 0; font-family: system-ui, sans-serif; font-size: .93rem; }
+.facts dt { color: var(--ink-soft); padding: 9px 0; border-top: 1px solid var(--rule); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+.facts dd { margin: 0; padding: 9px 0; border-top: 1px solid var(--rule); }
+.back { font-family: system-ui, sans-serif; font-size: .9rem; }
+
+.site-footer { border-top: 1px solid var(--rule); background: var(--wash); padding: 28px 0 40px; font-family: system-ui, sans-serif; }
+.disclosure { max-width: 60rem; font-size: .88rem; color: var(--warn); background: #fdf6e8; border-left: 3px solid var(--warn); padding: 12px 16px; margin: 0 0 12px; }
+.colophon { font-size: .8rem; color: var(--ink-soft); margin: 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* "Also known as" — the alias tail. Development codes, INNs, salt strings, brands. */
+.aliases { display: flex; flex-wrap: wrap; gap: 6px; }
+.alias { font-family: system-ui, sans-serif; font-size: .8rem; background: var(--accent-soft); color: var(--accent); border-radius: 3px; padding: 2px 8px; }
+.outage-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 54rem;
+  margin: 0 0 28px;
+  padding: 20px 22px;
+  color: #7b2020;
+  background: #fff1f1;
+  border: 1px solid #f1bcbc;
+  border-left: 6px solid #c83737;
+  border-radius: 12px;
+}
+.outage-card__icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  color: #fff;
+  background: #c83737;
+  border-radius: 50%;
+  font-weight: 800;
+}
+.outage-card strong { font-size: 1.05rem; }
+.outage-card p { margin: 4px 0; color: #7b4b4b; }
+.outage-card small { color: #986d6d; }
+.pipeline-shell--empty { opacity: .82; }
+.empty-state { padding: 34px 18px !important; color: #986d6d; text-align: center !important; font-style: italic; }
+.eyebrow { color: var(--accent); font-family: system-ui, sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.about-hero { max-width: 54rem; }
+.about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; }
+.about-grid .panel { margin-top: 0; }
+.axis-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+.axis-card { border: 1px solid var(--rule); border-radius: 8px; padding: 18px; background: var(--wash); }
+.axis-card__key { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-family: system-ui, sans-serif; font-weight: 700; }
+.axis-card h3 { margin: 14px 0 8px; }
+.axis-card p { margin: 0 0 12px; }
+.axis-card small { display: block; color: var(--ink-soft); font-family: system-ui, sans-serif; font-size: .78rem; line-height: 1.45; }
+.factory-steps { counter-reset: factory; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; list-style: none; padding: 0; margin: 22px 0 0; }
+.factory-steps li { counter-increment: factory; border-top: 3px solid var(--accent); padding-top: 12px; }
+.factory-steps li::before { content: counter(factory, decimal-leading-zero); color: var(--accent); font-family: system-ui, sans-serif; font-size: .78rem; font-weight: 700; }
+.factory-steps strong, .factory-steps span { display: block; }
+.factory-steps strong { margin: 8px 0 5px; }
+.factory-steps span { color: var(--ink-soft); font-size: .9rem; }
+.plain-list { padding-left: 1.2rem; }
+.plain-list li { margin: .55rem 0; }
+.about-limits { background: var(--wash); }
+.references a { overflow-wrap: anywhere; }
+@media (max-width: 800px) { .about-grid, .axis-grid { grid-template-columns: 1fr; } .factory-steps { grid-template-columns: 1fr; gap: 20px; } }

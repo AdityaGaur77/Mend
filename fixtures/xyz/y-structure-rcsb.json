@@ -1,0 +1,51 @@
+{
+  "data": {
+    "entries": [
+      {
+        "rcsb_id": "1QLP",
+        "struct": { "title": "Structure of alpha-1-antitrypsin" },
+        "exptl": [{ "method": "X-RAY DIFFRACTION" }],
+        "rcsb_entry_info": { "resolution_combined": [2.0] },
+        "polymer_entities": [{
+          "rcsb_polymer_entity": { "pdbx_description": "Alpha-1-antitrypsin" },
+          "rcsb_polymer_entity_container_identifiers": {
+            "reference_sequence_identifiers": [{ "database_name": "UniProt", "database_accession": "P01009" }]
+          },
+          "entity_src_gen": [{ "pdbx_gene_src_scientific_name": "Homo sapiens" }],
+          "entity_src_nat": []
+        }],
+        "nonpolymer_entities": []
+      },
+      {
+        "rcsb_id": "7API",
+        "struct": { "title": "The S variant of human alpha1-antitrypsin, structure and implications for function and metabolism" },
+        "exptl": [{ "method": "X-RAY DIFFRACTION" }],
+        "rcsb_entry_info": { "resolution_combined": [3.0] },
+        "polymer_entities": [{
+          "rcsb_polymer_entity": { "pdbx_description": "Alpha-1-antitrypsin" },
+          "rcsb_polymer_entity_container_identifiers": {
+            "reference_sequence_identifiers": [{ "database_name": "UniProt", "database_accession": "P01009" }]
+          },
+          "entity_src_gen": [],
+          "entity_src_nat": [{ "pdbx_organism_scientific": "Homo sapiens" }]
+        }],
+        "nonpolymer_entities": [{ "pdbx_entity_nonpoly": { "comp_id": "GOL", "name": "GLYCEROL" } }]
+      },
+      {
+        "rcsb_id": "7NPK",
+        "struct": { "title": "Alpha-1 antitrypsin C232S complexed with CMPD3" },
+        "exptl": [{ "method": "X-RAY DIFFRACTION" }],
+        "rcsb_entry_info": { "resolution_combined": [1.83] },
+        "polymer_entities": [{
+          "rcsb_polymer_entity": { "pdbx_description": "Alpha-1-antitrypsin" },
+          "rcsb_polymer_entity_container_identifiers": {
+            "reference_sequence_identifiers": [{ "database_name": "UniProt", "database_accession": "P01009" }]
+          },
+          "entity_src_gen": [{ "pdbx_gene_src_scientific_name": "Homo sapiens" }],
+          "entity_src_nat": []
+        }],
+        "nonpolymer_entities": [{ "pdbx_entity_nonpoly": { "comp_id": "CMPD3", "name": "CMPD3" } }]
+      }
+    ]
+  }
+}

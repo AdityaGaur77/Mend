@@ -1,0 +1,31 @@
+{
+  "fixture_notice": "Synthetic, deterministic patent-publication metadata for adapter tests; not a legal search result.",
+  "records": [
+    {
+      "publication_number": "US20240000001A1",
+      "assignee": "Example Therapeutics One",
+      "filing_date": "2023-03-20",
+      "publication_date": "2024-01-04",
+      "target_terms": ["SERPINA1", "alpha-1 antitrypsin deficiency"],
+      "status": "Published",
+      "source_url": "https://patents.example.invalid/publication/US20240000001A1",
+      "evidence": "Fixture publication metadata explicitly contains SERPINA1 and alpha-1 antitrypsin deficiency terms."
+    },
+    {
+      "publication_identifier": "WO2025123456A1",
+      "applicant": "Example Therapeutics Two",
+      "publication_date": "2025-06-26",
+      "terms": ["AATD", "alpha-1 antitrypsin"],
+      "url": "https://patents.example.invalid/publication/WO2025123456A1",
+      "abstract_snippet": "Fixture abstract snippet explicitly contains AATD and alpha-1 antitrypsin terms."
+    },
+    {
+      "publicationNumber": "EP3000000A1",
+      "filingDate": "2015-09-01",
+      "publicationDate": "2016-03-16",
+      "targetTerms": ["SERPINA1"],
+      "sourceUrl": "https://patents.example.invalid/publication/EP3000000A1",
+      "snippet": "Fixture record contains a SERPINA1 target term; assignee is intentionally unavailable."
+    }
+  ]
+}

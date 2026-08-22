@@ -1,0 +1,37 @@
+{
+  "identifier": "zd_retry_run",
+  "title": "Retry failed run",
+  "icon": "Refresh",
+  "description": "Retries a failed stage while preserving the run identifier and bounded retry history.",
+  "trigger": {
+    "type": "self-service",
+    "operation": "DAY-2",
+    "blueprintIdentifier": "zdWorkflowRun",
+    "userInputs": {
+      "properties": { "reason": { "title": "Retry reason", "type": "string" } },
+      "required": ["reason"],
+      "order": ["reason"]
+    }
+  },
+  "invocationMethod": {
+    "type": "INTEGRATION_ACTION",
+    "installationId": "github-ocean",
+    "integrationActionType": "dispatch_workflow",
+    "integrationActionExecutionProperties": {
+      "org": "REPLACE_WITH_GITHUB_ORG",
+      "repo": "REPLACE_WITH_GITHUB_REPO",
+      "workflow": "port-delivery.yml",
+      "workflowInputs": {
+        "operation": "retry",
+        "port_run_id": "{{ .run.id }}",
+        "workflow_run_id": "{{ .entity.identifier }}",
+        "brief_json": "{{ .entity.properties.brief | tojson }}",
+        "plan_hash": "{{ .entity.properties.plan_hash }}",
+        "state_json": "{{ .entity.properties | tojson }}"
+      },
+      "reportWorkflowStatus": true
+    }
+  },
+  "requiredApproval": false,
+  "allowAnyoneToViewRuns": true
+}

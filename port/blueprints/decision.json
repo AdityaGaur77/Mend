@@ -1,0 +1,25 @@
+{
+  "identifier": "zdDecision",
+  "title": "Workflow Decision",
+  "icon": "Checklist",
+  "description": "An immutable approval, rejection, retry, or escalation decision for a workflow run.",
+  "schema": {
+    "properties": {
+      "kind": { "title": "Kind", "type": "string", "enum": ["approve", "reject", "retry", "escalate"] },
+      "scope": { "title": "Decision scope", "type": "string", "enum": ["release", "repair", "retry", "escalation"] },
+      "actor": { "title": "Actor", "type": "string" },
+      "reason": { "title": "Reason", "type": "string" },
+      "evidence_snapshot": { "title": "Evidence reviewed", "type": "object" },
+      "recorded_at": { "title": "Recorded at", "type": "string", "format": "date-time" }
+    },
+    "required": ["kind", "scope", "actor", "evidence_snapshot", "recorded_at"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {
+    "run": { "title": "Workflow run", "target": "zdWorkflowRun", "required": true, "many": false },
+    "software_change": { "title": "Software change", "target": "mendSoftwareChange", "required": false, "many": false },
+    "repair_request": { "title": "Repair request", "target": "mendRepairRequest", "required": false, "many": false }
+  }
+}

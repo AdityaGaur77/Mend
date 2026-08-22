@@ -1,0 +1,12 @@
+{
+  "identifier": "zero-downtime-factory",
+  "title": "Mend Agentic Software Factory",
+  "properties": {
+    "summary": "A governed factory that manufactures and repairs X/Y/Z scientific intelligence integrations for the SERPINA1/AATD critical slice.",
+    "goals": ["Manufacture versioned X/Y/Z integrations", "Prove isolated X-axis failure and repair", "Preserve evidence and auditable human control"],
+    "constraints": ["One target and disease", "One source per axis", "No committed credentials", "The agent cannot approve its own change"],
+    "technical_choices": ["Repository-owned Port model", "Bright Data for messy X-axis acquisition", "Structured Y/Z sources", "OpenTelemetry-compatible correlation IDs"],
+    "risks": ["External schemas can drift", "Missing records can be mistaken for absence", "A release or repair must not bypass human review"]
+  },
+  "relations": {}
+}

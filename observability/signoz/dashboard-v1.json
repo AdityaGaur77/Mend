@@ -1,0 +1,60 @@
+{
+  "description": "Run-correlated latency, execution rate, and controlled failures for the product-neutral Zero Downtime fixture.",
+  "image": "/assets/Icons/eight-ball",
+  "layout": [
+    { "h": 6, "i": "38beb501-3789-40ae-a65b-29064883e254", "moved": false, "static": false, "w": 6, "x": 0, "y": 0 },
+    { "h": 6, "i": "a9eeb9ad-e2d2-4857-a565-e0076816baba", "moved": false, "static": false, "w": 6, "x": 6, "y": 0 },
+    { "h": 6, "i": "e3641bd3-aee2-4428-990a-eab87c800de6", "moved": false, "static": false, "w": 12, "x": 0, "y": 6 }
+  ],
+  "panelMap": {},
+  "tags": ["zero-downtime", "opentelemetry"],
+  "title": "Zero Downtime Sponsor Smoke",
+  "uploadedGrafana": false,
+  "uuid": "5c4d8678-218b-41f5-b3da-71733b7613cb",
+  "variables": {},
+  "version": "v5",
+  "widgets": [
+    {
+      "description": "Completed workflow executions per second, grouped by outcome.",
+      "id": "38beb501-3789-40ae-a65b-29064883e254",
+      "panelTypes": "graph",
+      "query": {
+        "builder": { "queryData": [], "queryFormulas": [] },
+        "clickhouse_sql": [{ "disabled": true, "legend": "", "name": "A", "query": "" }],
+        "promql": [{ "disabled": false, "legend": "{{outcome}}", "name": "A", "query": "sum by (outcome) (rate({\"zero_downtime_runs_total\"}[1m]))" }],
+        "queryType": "promql"
+      },
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Execution rate",
+      "yAxisUnit": "ops"
+    },
+    {
+      "description": "P95 end-to-end run latency.",
+      "id": "a9eeb9ad-e2d2-4857-a565-e0076816baba",
+      "panelTypes": "graph",
+      "query": {
+        "builder": { "queryData": [], "queryFormulas": [] },
+        "clickhouse_sql": [{ "disabled": true, "legend": "", "name": "A", "query": "" }],
+        "promql": [{ "disabled": false, "legend": "p95", "name": "A", "query": "histogram_quantile(0.95, sum by (le) (rate({\"zero_downtime_run_duration_ms_bucket\"}[5m])))" }],
+        "queryType": "promql"
+      },
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Run latency (P95)",
+      "yAxisUnit": "ms"
+    },
+    {
+      "description": "Failure count by pipeline stage. A controlled fail or recover run makes this non-zero.",
+      "id": "e3641bd3-aee2-4428-990a-eab87c800de6",
+      "panelTypes": "graph",
+      "query": {
+        "builder": { "queryData": [], "queryFormulas": [] },
+        "clickhouse_sql": [{ "disabled": true, "legend": "", "name": "A", "query": "" }],
+        "promql": [{ "disabled": false, "legend": "{{pipeline_stage}}", "name": "A", "query": "sum by (pipeline_stage) (increase({\"zero_downtime_stage_failures_total\"}[5m]))" }],
+        "queryType": "promql"
+      },
+      "timePreferance": "GLOBAL_TIME",
+      "title": "Stage failures",
+      "yAxisUnit": "none"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "identifier": "mendScientificBrief",
+  "title": "Mend Scientific Brief",
+  "icon": "Product",
+  "description": "The immutable scientific question and constrained X/Y/Z scope that starts a Mend factory build.",
+  "schema": {
+    "properties": {
+      "disease": { "title": "Disease", "type": "string" },
+      "target": { "title": "Target", "type": "string" },
+      "question": { "title": "Scientific question", "type": "string" },
+      "axes": {
+        "title": "Required axes",
+        "type": "array",
+        "items": { "type": "string", "enum": ["X", "Y", "Z"] }
+      },
+      "scope_constraints": { "title": "Scope constraints", "type": "array", "items": { "type": "string" } },
+      "acceptance_criteria": { "title": "Acceptance criteria", "type": "array", "items": { "type": "string" } },
+      "status": { "title": "Status", "type": "string", "enum": ["draft", "active", "fulfilled", "superseded"] },
+      "submitted_at": { "title": "Submitted at", "type": "string", "format": "date-time" }
+    },
+    "required": ["disease", "target", "question", "axes", "scope_constraints", "acceptance_criteria", "status"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {
+    "project": { "title": "Project", "target": "zdProject", "required": true, "many": false }
+  }
+}

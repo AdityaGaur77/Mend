@@ -1,0 +1,21 @@
+{
+  "identifier": "zdService",
+  "title": "Delivery Service",
+  "icon": "Service",
+  "description": "A replaceable tool, application, or pipeline capability used by a delivery project.",
+  "schema": {
+    "properties": {
+      "kind": { "title": "Kind", "type": "string", "enum": ["orchestrator", "data_source", "application", "observability"] },
+      "contract": { "title": "Contract", "type": "string" },
+      "status": { "title": "Status", "type": "string", "enum": ["scaffolded", "configured", "verified"] },
+      "documentation": { "title": "Documentation", "type": "string" }
+    },
+    "required": ["kind", "contract", "status"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {
+    "project": { "title": "Project", "target": "zdProject", "required": true, "many": false }
+  }
+}

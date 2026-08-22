@@ -1,0 +1,32 @@
+{
+  "identifier": "mendSoftwareChange",
+  "title": "Mend Software Change",
+  "icon": "GitHub",
+  "description": "Generated build or repair software plus immutable Git and automated-test evidence for human review.",
+  "schema": {
+    "properties": {
+      "kind": { "title": "Kind", "type": "string", "enum": ["BUILD", "REPAIR"] },
+      "factory_version": { "title": "Proposed factory version", "type": "string" },
+      "author": { "title": "Author", "type": "string" },
+      "git_ref": { "title": "Git ref", "type": "string" },
+      "git_diff_url": { "title": "Git diff", "type": "string", "format": "url" },
+      "changed_files": { "title": "Changed files", "type": "array", "items": { "type": "string" } },
+      "test_status": { "title": "Test status", "type": "string", "enum": ["PENDING", "PASS", "FAIL"] },
+      "test_command": { "title": "Test command", "type": "string" },
+      "test_evidence": { "title": "Test evidence", "type": "object" },
+      "status": { "title": "Review/deployment status", "type": "string", "enum": ["DRAFT", "AWAITING_APPROVAL", "APPROVED", "REJECTED", "DEPLOYED"] },
+      "created_at": { "title": "Created at", "type": "string", "format": "date-time" },
+      "deployed_at": { "title": "Deployed at", "type": "string", "format": "date-time" },
+      "audit": { "title": "Change audit", "type": "array", "items": { "type": "object" } }
+    },
+    "required": ["kind", "factory_version", "author", "git_ref", "changed_files", "test_status", "test_command", "test_evidence", "status", "audit"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {
+    "brief": { "title": "Scientific brief", "target": "mendScientificBrief", "required": true, "many": false },
+    "workflow_run": { "title": "Factory workflow run", "target": "zdWorkflowRun", "required": true, "many": false },
+    "integrations": { "title": "Affected integrations", "target": "mendAxisIntegration", "required": false, "many": true }
+  }
+}

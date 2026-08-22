@@ -1,0 +1,21 @@
+{
+  "identifier": "zdProject",
+  "title": "Delivery Project",
+  "icon": "Product",
+  "description": "Product-neutral delivery context: goals, constraints, technical choices, and risks.",
+  "schema": {
+    "properties": {
+      "summary": { "title": "Summary", "type": "string" },
+      "goals": { "title": "Goals", "type": "array", "items": { "type": "string" } },
+      "constraints": { "title": "Constraints", "type": "array", "items": { "type": "string" } },
+      "technical_choices": { "title": "Technical choices", "type": "array", "items": { "type": "string" } },
+      "risks": { "title": "Risks", "type": "array", "items": { "type": "string" } },
+      "repository": { "title": "Repository", "type": "string", "format": "url" }
+    },
+    "required": ["summary", "goals", "constraints", "technical_choices", "risks"]
+  },
+  "mirrorProperties": {},
+  "calculationProperties": {},
+  "aggregationProperties": {},
+  "relations": {}
+}

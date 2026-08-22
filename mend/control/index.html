@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Mend — control room</title>
+  <link rel="stylesheet" href="./control.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>Mend control room</h1>
+    <p class="lede">Flips which version of the Meridian pipeline the server returns at
+      <code>/pipeline</code>. The canonical URL never changes and the scraper config never learns
+      that versions exist.</p>
+
+    <h2>Serve version</h2>
+    <div class="panel">
+      <div class="versions" id="versions">
+        <button class="vbtn" data-version="v1" disabled>
+          <span class="vbtn__id">v1 <span class="vbtn__live"></span></span>
+          <span class="vbtn__what">Source outage. The page returns zero programme records.</span>
+        </button>
+        <button class="vbtn" data-version="v2" disabled>
+          <span class="vbtn__id">v2 <span class="vbtn__live"></span></span>
+          <span class="vbtn__what">The break. Phase and Status merged into pills.</span>
+        </button>
+        <button class="vbtn" data-version="v3" disabled>
+          <span class="vbtn__id">v3 <span class="vbtn__live"></span></span>
+          <span class="vbtn__what">Schema corruption. Rows return, machine fields do not.</span>
+        </button>
+        <button class="vbtn" data-version="v4" disabled>
+          <span class="vbtn__id">v4 <span class="vbtn__live"></span></span>
+          <span class="vbtn__what">Original healthy pipeline restored.</span>
+        </button>
+      </div>
+    <div class="status-row">
+      <p class="status" id="status" aria-live="polite">Checking…</p>
+      <button class="refresh" id="refresh" type="button">Refresh status</button>
+      <a class="open-pipeline" id="open-pipeline" href="/pipeline/" target="_blank" rel="noopener">Open pipeline</a>
+    </div>
+    </div>
+
+    <h2>Signals — read live from <code>/pipeline</code></h2>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Scraper config</th><th>Rows</th><th>Conformance</th>
+            <th>phase null</th><th>Unmapped</th><th>failure_class</th><th>Route</th><th>vs pre-break bar</th>
+          </tr>
+        </thead>
+        <tbody id="signals">
+          <tr><td colspan="8" class="dim">Reading…</td></tr>
+        </tbody>
+      </table>
+      <p class="note" id="readout-note"></p>
+    </div>
+
+    <h2>Proposed repairs — what the numbers can and cannot separate</h2>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Proposed selector</th><th>Conformance</th><th>phase null</th>
+            <th>Sample value</th><th>Rows wrong</th><th>Numeric gate</th>
+          </tr>
+        </thead>
+        <tbody id="negatives">
+          <tr><td colspan="6" class="dim">Reading…</td></tr>
+        </tbody>
+      </table>
+      <p class="note" id="negatives-note"></p>
+    </div>
+
+    <p class="disclaimer"><strong>This table is a local read-out, not the telemetry system.</strong>
+      It runs the same extraction code the test suite asserts against
+      (<code>src/extract-core.mjs</code>, byte-identical logic, verified by
+      <code>test/parity.test.mjs</code>) directly in this browser. SigNoz is the system of record.
+      Meridian Therapeutics is a fictional company; nothing on it is real.</p>
+  </div>
+  <script type="module" src="./control.js"></script>
+</body>
+</html>

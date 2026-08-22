@@ -1,0 +1,26 @@
+[
+  {
+    "identifier": "port-orchestrator",
+    "title": "Port Orchestration",
+    "properties": { "kind": "orchestrator", "contract": "Brief and change inputs become auditable workflow runs and gated releases.", "status": "scaffolded", "documentation": "port/README.md" },
+    "relations": { "project": "zero-downtime-factory" }
+  },
+  {
+    "identifier": "structured-data-source",
+    "title": "Structured Data Source",
+    "properties": { "kind": "data_source", "contract": "Produces validated normalized records; the current provider is a replaceable smoke fixture.", "status": "scaffolded", "documentation": "CODEX.md" },
+    "relations": { "project": "zero-downtime-factory" }
+  },
+  {
+    "identifier": "application-pipeline",
+    "title": "Application or Pipeline",
+    "properties": { "kind": "application", "contract": "Consumes normalized records without depending on the fixture source.", "status": "scaffolded", "documentation": "refecen/SMOKE_TESTS.md" },
+    "relations": { "project": "zero-downtime-factory" }
+  },
+  {
+    "identifier": "telemetry-backend",
+    "title": "Telemetry Backend",
+    "properties": { "kind": "observability", "contract": "Receives correlated workflow traces, logs, and metrics through OpenTelemetry.", "status": "scaffolded", "documentation": "refecen/SMOKE_TESTS.md" },
+    "relations": { "project": "zero-downtime-factory" }
+  }
+]

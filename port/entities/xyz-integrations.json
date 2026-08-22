@@ -1,0 +1,50 @@
+[
+  {
+    "identifier": "serpina1-x-pipeline",
+    "title": "X — Pipeline Activity",
+    "properties": {
+      "axis": "X",
+      "question": "Is anyone developing therapeutics here?",
+      "source_name": "DNDi pipeline fixture",
+      "source_kind": "web",
+      "provider": "Bright Data",
+      "artifact_path": "src/axes/x-pipeline-adapter.mjs",
+      "factory_version": "candidate-v1",
+      "status": "building",
+      "evidence_required": true
+    },
+    "relations": { "project": "zero-downtime-factory", "brief": "serpina1-aatd-xyz" }
+  },
+  {
+    "identifier": "serpina1-y-structure",
+    "title": "Y — Structural Readiness",
+    "properties": {
+      "axis": "Y",
+      "question": "Do useful experimental structures exist for this target?",
+      "source_name": "RCSB PDB",
+      "source_kind": "api",
+      "provider": "RCSB PDB",
+      "artifact_path": "src/axes/y/structure.mjs",
+      "factory_version": "candidate-v1",
+      "status": "building",
+      "evidence_required": true
+    },
+    "relations": { "project": "zero-downtime-factory", "brief": "serpina1-aatd-xyz" }
+  },
+  {
+    "identifier": "serpina1-z-ip",
+    "title": "Z — IP Activity",
+    "properties": {
+      "axis": "Z",
+      "question": "How much visible patent activity exists around this target or program?",
+      "source_name": "Versioned SERPINA1 patent dataset",
+      "source_kind": "dataset",
+      "provider": "Public patent records",
+      "artifact_path": "src/axes/z-ip-activity.mjs",
+      "factory_version": "candidate-v1",
+      "status": "building",
+      "evidence_required": true
+    },
+    "relations": { "project": "zero-downtime-factory", "brief": "serpina1-aatd-xyz" }
+  }
+]

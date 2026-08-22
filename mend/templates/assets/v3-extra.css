@@ -1,0 +1,47 @@
+
+/* Meridian Web 2.4.3 — molecular targets are now published on the pipeline and on
+   each programme page. Appended to the 2.4.0 sheet; nothing else changed. */
+.target-symbol {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .82rem;
+  color: var(--ink);
+  background: var(--slate-soft);
+  border-radius: 6px;
+  padding: 2px 7px;
+}
+.facts dd.target {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .88rem;
+}
+.pipeline-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+.pipeline-filter label {
+  font-size: .78rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--ink-soft);
+}
+.pipeline-filter input {
+  width: min(24rem, 100%);
+  border: 1px solid var(--rule-strong);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 9px 34px 9px 11px;
+  font: inherit;
+}
+.pipeline-filter input:focus {
+  outline: 3px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+.pipeline-filter__count {
+  color: var(--ink-soft);
+  font-size: .88rem;
+}
+.pipeline tr[hidden] { display: none; }

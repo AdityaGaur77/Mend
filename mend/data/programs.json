@@ -1,0 +1,490 @@
+{
+  "company": {
+    "name": "Meridian Therapeutics",
+    "tagline": "Medicines for diseases the market forgot.",
+    "location": "Basel, Switzerland",
+    "founded": 2019,
+    "disclosure": "Meridian Therapeutics is a fictional company created to test data pipelines. No program, compound, trial, or result on this site is real.",
+    "pipelineUpdated": "2026-08-04",
+    "attributeStandard": "Canonical drug attributes follow Vinogradov et al., LLM-Based Agents for Competitive Landscape Mapping in Drug Asset Due Diligence (arXiv:2508.16571), §2 Attributes Dataset. See docs/PRIOR-ART.md."
+  },
+  "programs": [
+    {
+      "slug": "mrd-4471",
+      "program": "MRD-4471",
+      "compound": "tarvanidazole",
+      "indication": "Visceral leishmaniasis",
+      "modality": "Small molecule",
+      "phase": "Phase 2",
+      "status": "Recruiting",
+      "partner": "DNDi",
+      "target": "CYP51",
+      "route": "Oral",
+      "updated": "2026-06-14",
+      "summary": "Oral nitroheterocycle in a dose-ranging study across three sites in East Africa. Primary endpoint is initial cure at day 30.",
+      "aliases": [
+        "MRD-4471",
+        "MT-4471",
+        "tarvanidazole",
+        "tarvanidazole mesylate"
+      ],
+      "moa": "Sterol 14α-demethylase inhibition; nitroreductase-activated",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "Orphan designation (EMA)",
+      "otherIndications": [
+        "Post-kala-azar dermal leishmaniasis"
+      ]
+    },
+    {
+      "slug": "mrd-3308",
+      "program": "MRD-3308",
+      "compound": "—",
+      "indication": "Chagas disease",
+      "modality": "Small molecule",
+      "phase": "Phase 2",
+      "status": "Recruiting",
+      "partner": "DNDi",
+      "target": "CPSF3",
+      "route": "Oral",
+      "updated": "2026-05-29",
+      "summary": "Benzoxaborole series in chronic indeterminate Chagas. Parasitological response assessed by serial qPCR through twelve months.",
+      "aliases": [
+        "MRD-3308",
+        "DNDI-3308"
+      ],
+      "moa": "Benzoxaborole; CPSF3 inhibition",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "Orphan designation (FDA)",
+      "otherIndications": []
+    },
+    {
+      "slug": "mrd-5120",
+      "program": "MRD-5120",
+      "compound": "solvantel",
+      "indication": "Human African trypanosomiasis",
+      "modality": "Small molecule",
+      "phase": "Phase 2",
+      "status": "Enrolling by invitation",
+      "partner": "—",
+      "target": "CPSF3",
+      "route": "Oral",
+      "updated": "2026-07-02",
+      "summary": "Single-dose oral candidate for stage 2 disease, studied in a test-and-treat configuration that does not require lumbar puncture.",
+      "aliases": [
+        "MRD-5120",
+        "solvantel",
+        "solvantel hydrochloride"
+      ],
+      "moa": "Benzoxaborole; CPSF3 inhibition",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "PRV-eligible",
+      "otherIndications": [
+        "Animal African trypanosomiasis"
+      ]
+    },
+    {
+      "slug": "mrd-2044",
+      "program": "MRD-2044",
+      "compound": "—",
+      "indication": "Cutaneous leishmaniasis",
+      "modality": "Small molecule",
+      "phase": "Phase 2",
+      "status": "Active, not recruiting",
+      "partner": "MMV",
+      "target": "PSMB5",
+      "route": "Topical",
+      "updated": "2026-04-18",
+      "summary": "Topical proteasome inhibitor for New World cutaneous disease. Lesion closure at day 90 against paromomycin comparator.",
+      "aliases": [
+        "MRD-2044",
+        "MMV-2044"
+      ],
+      "moa": "Kinetoplastid proteasome β5 inhibition",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "Orphan designation (EMA)",
+      "otherIndications": [
+        "Mucosal leishmaniasis"
+      ]
+    },
+    {
+      "slug": "mrd-6613",
+      "program": "MRD-6613",
+      "compound": "mirazolide",
+      "indication": "Schistosomiasis",
+      "modality": "Small molecule",
+      "phase": "Phase 3",
+      "status": "Recruiting",
+      "partner": "GARDP",
+      "target": "TRPM_PZQ",
+      "route": "Oral",
+      "updated": "2026-07-21",
+      "summary": "Paediatric-friendly dispersible formulation studied in pre-school-age children, a group current standard of care does not serve well.",
+      "aliases": [
+        "MRD-6613",
+        "mirazolide",
+        "mirazolide dispersible"
+      ],
+      "moa": "TRPM_PZQ channel agonism",
+      "therapeuticArea": "Neglected tropical disease — helminth",
+      "regulatoryStatus": "PRV-eligible; paediatric plan agreed",
+      "otherIndications": [
+        "Female genital schistosomiasis"
+      ]
+    },
+    {
+      "slug": "mrd-0087",
+      "program": "MRD-0087",
+      "compound": "miltefosine",
+      "indication": "Visceral leishmaniasis — access programme",
+      "modality": "Small molecule",
+      "phase": "Marketed",
+      "status": "Access programme",
+      "partner": "—",
+      "target": "IPC synthase (putative)",
+      "route": "Oral",
+      "updated": "2026-03-11",
+      "summary": "In-licensed generic distributed through a not-for-profit access programme. Meridian runs no clinical study on this compound; it is listed because supply and distribution sit inside the portfolio.",
+      "aliases": [
+        "miltefosine",
+        "hexadecylphosphocholine",
+        "HePC",
+        "Impavido"
+      ],
+      "moa": "Alkylphosphocholine; inositol phosphorylceramide synthase (putative)",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "Approved (US, EU); WHO Essential Medicines List",
+      "otherIndications": [
+        "Cutaneous leishmaniasis",
+        "Mucosal leishmaniasis"
+      ]
+    },
+    {
+      "slug": "mrd-7702",
+      "program": "MRD-7702",
+      "compound": "—",
+      "indication": "Onchocerciasis",
+      "modality": "Small molecule",
+      "phase": "Phase 1",
+      "status": "Recruiting",
+      "partner": "—",
+      "target": "β-tubulin",
+      "route": "Oral",
+      "updated": "2026-06-30",
+      "summary": "Macrofilaricide candidate in single-ascending-dose healthy volunteers. The unmet need is an adulticide, not another microfilaricide.",
+      "aliases": [
+        "MRD-7702",
+        "MRD-7702A"
+      ],
+      "moa": "β-tubulin polymerisation inhibition (macrofilaricidal)",
+      "therapeuticArea": "Neglected tropical disease — filarial",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Loiasis"
+      ]
+    },
+    {
+      "slug": "mrd-7815",
+      "program": "MRD-7815",
+      "compound": "—",
+      "indication": "Lymphatic filariasis",
+      "modality": "Small molecule",
+      "phase": "Phase 1",
+      "status": "Completed",
+      "partner": "—",
+      "target": "Wolbachia rpoB",
+      "route": "Oral",
+      "updated": "2026-02-09",
+      "summary": "Anti-Wolbachia agent aiming at a seven-day course. Phase 1 completed; Phase 2 site selection under way.",
+      "aliases": [
+        "MRD-7815",
+        "AWOL-7815"
+      ],
+      "moa": "Anti-Wolbachia; bacterial RNA polymerase inhibition",
+      "therapeuticArea": "Neglected tropical disease — filarial",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Onchocerciasis"
+      ]
+    },
+    {
+      "slug": "mrd-8134",
+      "program": "MRD-8134",
+      "compound": "brixafenib",
+      "indication": "Eumycetoma",
+      "modality": "Small molecule",
+      "phase": "Phase 1",
+      "status": "Recruiting",
+      "partner": "DNDi",
+      "target": "CYP51",
+      "route": "Oral",
+      "updated": "2026-07-15",
+      "summary": "Azole for Madurella mycetomatis infection. Current treatment runs twelve months with poor cure rates and frequent amputation.",
+      "aliases": [
+        "MRD-8134",
+        "brixafenib",
+        "brixafenib tosylate"
+      ],
+      "moa": "Fungal CYP51 (lanosterol 14α-demethylase) inhibition",
+      "therapeuticArea": "Neglected tropical disease — fungal",
+      "regulatoryStatus": "Orphan designation (EMA)",
+      "otherIndications": [
+        "Chromoblastomycosis"
+      ]
+    },
+    {
+      "slug": "mrd-8890",
+      "program": "MRD-8890",
+      "compound": "—",
+      "indication": "Buruli ulcer",
+      "modality": "Small molecule",
+      "phase": "Phase 1",
+      "status": "Not yet recruiting",
+      "partner": "—",
+      "target": "MmpL3",
+      "route": "Oral",
+      "updated": "2026-08-01",
+      "summary": "Oral-only regimen intended to remove the injectable component and the eight-week clinic burden it imposes.",
+      "aliases": [
+        "MRD-8890"
+      ],
+      "moa": "MmpL3 mycolic acid transporter inhibition",
+      "therapeuticArea": "Mycobacterial",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Mycobacterium ulcerans skin infection"
+      ]
+    },
+    {
+      "slug": "mrd-9021",
+      "program": "MRD-9021",
+      "compound": "—",
+      "indication": "Soil-transmitted helminths",
+      "modality": "Small molecule",
+      "phase": "Preclinical",
+      "status": "IND-enabling",
+      "partner": "—",
+      "target": "nAChR β-subunit",
+      "route": "Oral",
+      "updated": "2026-05-06",
+      "summary": "Single-dose candidate with activity against Trichuris trichiura, where benzimidazole cure rates are worst.",
+      "aliases": [
+        "MRD-9021"
+      ],
+      "moa": "Nematode nicotinic acetylcholine receptor agonism",
+      "therapeuticArea": "Neglected tropical disease — helminth",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Strongyloidiasis"
+      ]
+    },
+    {
+      "slug": "mrd-9142",
+      "program": "MRD-9142",
+      "compound": "—",
+      "indication": "Chagas disease",
+      "modality": "Small molecule",
+      "phase": "Preclinical",
+      "status": "IND-enabling",
+      "partner": "MMV",
+      "target": "PI4Kβ",
+      "route": "Oral",
+      "updated": "2026-06-22",
+      "summary": "Backup series to MRD-3308 with a differentiated resistance profile. GLP toxicology starts in Q4.",
+      "aliases": [
+        "MRD-9142",
+        "MMV-9142"
+      ],
+      "moa": "Phosphatidylinositol 4-kinase β inhibition",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "None",
+      "otherIndications": []
+    },
+    {
+      "slug": "mrd-9310",
+      "program": "MRD-9310",
+      "compound": "—",
+      "indication": "Visceral leishmaniasis",
+      "modality": "Small molecule",
+      "phase": "Preclinical",
+      "status": "Lead optimisation",
+      "partner": "—",
+      "target": "NMT",
+      "route": "Oral",
+      "updated": "2026-07-28",
+      "summary": "N-myristoyltransferase inhibitors optimised for the hamster model. Selectivity over the human orthologue is the gating criterion.",
+      "aliases": [
+        "MRD-9310"
+      ],
+      "moa": "N-myristoyltransferase inhibition",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Cutaneous leishmaniasis"
+      ]
+    },
+    {
+      "slug": "mrd-9448",
+      "program": "MRD-9448",
+      "compound": "—",
+      "indication": "Dengue",
+      "modality": "Small molecule",
+      "phase": "Preclinical",
+      "status": "Lead optimisation",
+      "partner": "—",
+      "target": "NS4B",
+      "route": "Oral",
+      "updated": "2026-04-30",
+      "summary": "Pan-serotype NS4B inhibitor. Prophylaxis and post-exposure use are both on the table; the resistance barrier decides which.",
+      "aliases": [
+        "MRD-9448"
+      ],
+      "moa": "Flavivirus NS4B inhibition",
+      "therapeuticArea": "Arbovirus",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Zika virus infection"
+      ]
+    },
+    {
+      "slug": "mrd-9506",
+      "program": "MRD-9506",
+      "compound": "—",
+      "indication": "Drug-resistant tuberculosis",
+      "modality": "Small molecule",
+      "phase": "Preclinical",
+      "status": "IND-enabling",
+      "partner": "GARDP",
+      "target": "DprE1",
+      "route": "Oral",
+      "updated": "2026-08-04",
+      "summary": "Covalent DprE1 inhibitor intended to slot into an all-oral six-month regimen without overlapping resistance.",
+      "aliases": [
+        "MRD-9506",
+        "GARDP-9506"
+      ],
+      "moa": "Covalent DprE1 inhibition",
+      "therapeuticArea": "Mycobacterial",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Drug-sensitive tuberculosis"
+      ]
+    },
+    {
+      "slug": "mrd-1173",
+      "program": "MRD-1173",
+      "compound": "—",
+      "indication": "Kinetoplastid (pan-species)",
+      "modality": "Small molecule",
+      "phase": "Discovery",
+      "status": "Hit-to-lead",
+      "partner": "—",
+      "target": "PTR1",
+      "route": "Oral",
+      "updated": "2026-03-27",
+      "summary": "Fragment-derived series screened against T. cruzi, T. brucei and L. donovani in parallel rather than sequentially.",
+      "aliases": [
+        "MRD-1173"
+      ],
+      "moa": "Pteridine reductase 1 inhibition",
+      "therapeuticArea": "Neglected tropical disease — kinetoplastid",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "Chagas disease",
+        "Visceral leishmaniasis"
+      ]
+    },
+    {
+      "slug": "mrd-1204",
+      "program": "MRD-1204",
+      "compound": "—",
+      "indication": "Schistosomiasis",
+      "modality": "Small molecule",
+      "phase": "Discovery",
+      "status": "Hit-to-lead",
+      "partner": "—",
+      "target": "SmTGR",
+      "route": "Oral",
+      "updated": "2026-05-19",
+      "summary": "Thioredoxin glutathione reductase inhibitors active against juvenile worms, which praziquantel largely misses.",
+      "aliases": [
+        "MRD-1204"
+      ],
+      "moa": "Thioredoxin glutathione reductase inhibition",
+      "therapeuticArea": "Neglected tropical disease — helminth",
+      "regulatoryStatus": "None",
+      "otherIndications": []
+    },
+    {
+      "slug": "mrd-1288",
+      "program": "MRD-1288",
+      "compound": "—",
+      "indication": "Malaria (P. vivax radical cure)",
+      "modality": "Small molecule",
+      "phase": "Discovery",
+      "status": "Hit-to-lead",
+      "partner": "MMV",
+      "target": "ATP4",
+      "route": "Oral",
+      "updated": "2026-07-08",
+      "summary": "Hypnozoite-active series screened in primary hepatocyte assays. A radical cure that does not require G6PD testing is the goal.",
+      "aliases": [
+        "MRD-1288",
+        "MMV-1288"
+      ],
+      "moa": "P-type ATPase 4 (ATP4) inhibition",
+      "therapeuticArea": "Malaria",
+      "regulatoryStatus": "None",
+      "otherIndications": [
+        "P. falciparum malaria"
+      ]
+    },
+    {
+      "slug": "mrd-6002",
+      "program": "MRD-6002",
+      "compound": "denrolimab",
+      "indication": "Severe eosinophilic asthma",
+      "modality": "Monoclonal antibody",
+      "phase": "Phase 3",
+      "status": "Active, not recruiting",
+      "partner": "—",
+      "target": "IL-5Rα",
+      "route": "Subcutaneous",
+      "updated": "2026-06-05",
+      "summary": "Quarterly-dosed anti-IL-5Rα antibody. Funds the neglected-disease portfolio; the commercial programme is not the mission, it is the budget.",
+      "aliases": [
+        "MRD-6002",
+        "denrolimab",
+        "denrolimab-ttvx"
+      ],
+      "moa": "IL-5 receptor α antagonism; ADCC-enhanced",
+      "therapeuticArea": "Respiratory",
+      "regulatoryStatus": "Fast Track (FDA)",
+      "otherIndications": [
+        "Eosinophilic granulomatosis with polyangiitis"
+      ]
+    },
+    {
+      "slug": "mrd-2210",
+      "program": "MRD-2210",
+      "compound": "kelvorast",
+      "indication": "COPD (chronic bronchitis)",
+      "modality": "Small molecule (inhaled)",
+      "phase": "Discontinued",
+      "status": "Discontinued — Q1 2026",
+      "partner": "—",
+      "target": "PDE4",
+      "route": "Inhaled",
+      "updated": "2026-01-23",
+      "summary": "Inhaled PDE4 inhibitor stopped after the Phase 2b exacerbation endpoint was missed. Retained on the page for disclosure continuity.",
+      "aliases": [
+        "MRD-2210",
+        "kelvorast",
+        "kelvorast trihydrate"
+      ],
+      "moa": "Phosphodiesterase 4 inhibition",
+      "therapeuticArea": "Respiratory",
+      "regulatoryStatus": "None — development discontinued",
+      "otherIndications": []
+    }
+  ]
+}

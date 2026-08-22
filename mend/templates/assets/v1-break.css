@@ -1,0 +1,29 @@
+.outage-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 54rem;
+  margin: 0 0 28px;
+  padding: 20px 22px;
+  color: #7b2020;
+  background: #fff1f1;
+  border: 1px solid #f1bcbc;
+  border-left: 6px solid #c83737;
+  border-radius: 12px;
+}
+.outage-card__icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  color: #fff;
+  background: #c83737;
+  border-radius: 50%;
+  font-weight: 800;
+}
+.outage-card strong { font-size: 1.05rem; }
+.outage-card p { margin: 4px 0; color: #7b4b4b; }
+.outage-card small { color: #986d6d; }
+.pipeline-shell--empty { opacity: .82; }
+.empty-state { padding: 34px 18px !important; color: #986d6d; text-align: center !important; font-style: italic; }
