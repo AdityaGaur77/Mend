@@ -123,12 +123,19 @@ export function createTelemetry(options = {}) {
   }
 
   async function flush() {
-    await Promise.all([tracerProvider.forceFlush(), loggerProvider.forceFlush(), meterProvider.forceFlush()]);
+    // Telemetry must never turn a repair result into a failed repair. In the
+    // credential-free demo there may be no local collector; live SigNoz still
+    // receives the same exports when the endpoint is configured.
+    await Promise.allSettled([
+      tracerProvider.forceFlush(), loggerProvider.forceFlush(), meterProvider.forceFlush(),
+    ]);
   }
 
   async function shutdown() {
     await flush();
-    await Promise.all([tracerProvider.shutdown(), loggerProvider.shutdown(), meterProvider.shutdown()]);
+    await Promise.allSettled([
+      tracerProvider.shutdown(), loggerProvider.shutdown(), meterProvider.shutdown(),
+    ]);
   }
 
   return { serviceName, tracer, metrics, startSpan, log, failSpan, flush, shutdown };

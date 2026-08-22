@@ -7,6 +7,7 @@
     "start": "node src/server.mjs",
     "test": "node --test",
     "mend:heal": "node scripts/mend-heal.mjs",
+    "mend:activate": "node scripts/mend-activate.mjs",
     "site:build": "node mend/scripts/build.mjs",
     "site:activate": "node mend/scripts/activate.mjs",
     "site:serve": "node mend/scripts/serve.mjs",

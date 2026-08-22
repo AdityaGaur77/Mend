@@ -53,10 +53,12 @@ function generatorOf(html) {
 export async function readMeridian({
   origin = process.env.MEND_MERIDIAN_URL || null,
   version = process.env.MEND_MERIDIAN_VERSION || 'v4',
+  versionedLive = false,
   fetchImpl = globalThis.fetch,
 } = {}) {
   if (origin) {
-    const url = new URL(PIPELINE_PATH, origin).toString();
+    const path = versionedLive ? `/_v/${version}/pipeline/` : PIPELINE_PATH;
+    const url = new URL(path, origin).toString();
     const response = await fetchImpl(url, { headers: { accept: 'text/html' } });
     if (!response.ok) {
       const error = new Error(`meridian fetch failed: HTTP ${response.status}`);
@@ -240,8 +242,8 @@ export async function runMeridianX({
 }
 
 /** Convenience: acquire and run in one call. */
-export async function scrapeMeridian({ origin, version, plan, schema, baseline, rowsExpectedMin, fetchImpl } = {}) {
-  const page = await readMeridian({ origin, version, fetchImpl });
+export async function scrapeMeridian({ origin, version, versionedLive, plan, schema, baseline, rowsExpectedMin, fetchImpl } = {}) {
+  const page = await readMeridian({ origin, version, versionedLive, fetchImpl });
   return runMeridianX({ page, plan, schema, baseline, rowsExpectedMin });
 }
 

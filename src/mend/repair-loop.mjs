@@ -80,6 +80,7 @@ export async function scrapeOnce({
   registry,
   origin,
   version,
+  versionedLive = false,
   schema,
   baseline = null,
   telemetry,
@@ -88,7 +89,7 @@ export async function scrapeOnce({
   fetchImpl,
 }) {
   const startedAt = performance.now();
-  const page = await readMeridian({ origin, version, fetchImpl });
+  const page = await readMeridian({ origin, version, versionedLive, fetchImpl });
   const plan = registry.deployed();
   const run = await runMeridianX({ page, plan, schema, baseline });
   const durationMs = performance.now() - startedAt;
@@ -109,6 +110,7 @@ export async function runRepairLoop({
   origin = null,
   healthyVersion = 'v4',
   brokenVersion = 'v2',
+  versionedLive = false,
   schema,
   telemetry,
   reviewer = 'human-reviewer',
@@ -125,7 +127,7 @@ export async function runRepairLoop({
     // 1. The healthy run. Its conformance is the bar and its values are the anchors.
     const healthy = await scrapeOnce({
       registry, origin, version: healthyVersion, schema: recordSchema, telemetry,
-      runId: 'meridian-healthy', parentSpan: root, fetchImpl,
+      versionedLive, runId: 'meridian-healthy', parentSpan: root, fetchImpl,
     });
     const baseline = healthy.run.signals;
     const steps0 = { step: 'baseline', runId: healthy.runId, signals: baseline, status: healthy.run.validation.status };
@@ -135,7 +137,7 @@ export async function runRepairLoop({
     const detectedAt = now().toISOString();
     const broken = await scrapeOnce({
       registry, origin, version: brokenVersion, schema: recordSchema, baseline, telemetry,
-      runId: 'meridian-detect', parentSpan: root, fetchImpl,
+      versionedLive, runId: 'meridian-detect', parentSpan: root, fetchImpl,
     });
     steps.push({
       step: 'detect', runId: broken.runId, signals: broken.run.signals,
@@ -261,7 +263,7 @@ export async function runRepairLoop({
     //    scraper did. That distinction is the difference between healing and papering over.
     const rerun = await scrapeOnce({
       registry, origin, version: brokenVersion, schema: recordSchema, baseline, telemetry,
-      runId: 'meridian-verify', parentSpan: root, fetchImpl,
+      versionedLive, runId: 'meridian-verify', parentSpan: root, fetchImpl,
     });
     const verifiedAt = now().toISOString();
     changeRequest = await verifyChangeRequest(changeRequest, {

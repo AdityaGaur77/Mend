@@ -160,7 +160,7 @@ describe('disclosure — non-negotiable', () => {
     });
 
     test(`${version}: robots.txt disallows everything`, () => {
-      assert.match(read(version, 'robots.txt'), /User-agent: \*\nDisallow: \/$/m);
+      assert.match(read(version, 'robots.txt'), /User-agent: \*\r?\nDisallow: \/$/m);
     });
   }
 });

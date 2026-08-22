@@ -19,6 +19,7 @@
 
 import { createScraperRegistry, loadScraperRegistry, saveScraperRegistry } from '../src/mend/scraper-registry.mjs';
 import { runRepairLoop } from '../src/mend/repair-loop.mjs';
+import { createTelemetry } from '../src/telemetry.mjs';
 import { loadLocalEnv } from './env.mjs';
 
 loadLocalEnv();
@@ -33,6 +34,7 @@ const healthyVersion = flag('healthy', 'v4');
 const brokenVersion = flag('broken', 'v2');
 const approve = !argv.includes('--reject');
 const live = argv.includes('--live');
+const versionedLive = argv.includes('--versioned-live');
 const origin = live ? process.env.MEND_MERIDIAN_URL : null;
 const json = argv.includes('--json');
 
@@ -63,7 +65,15 @@ const registry = argv.includes('--reset') ? createScraperRegistry() : await load
 console.log(bold(`\nMend repair loop — meridian ${live ? `(live: ${origin})` : '(committed versions/ tree)'}`));
 console.log(dim(`  scraper.config_version ${registry.deployed().version}  ·  ${healthyVersion} healthy -> ${brokenVersion} changed\n`));
 
-const loop = await runRepairLoop({ registry, origin, healthyVersion, brokenVersion, approve });
+const telemetry = createTelemetry();
+let loop;
+try {
+  loop = await runRepairLoop({
+    registry, origin, healthyVersion, brokenVersion, approve, telemetry, versionedLive,
+  });
+} finally {
+  await telemetry.shutdown();
+}
 
 if (json) {
   console.log(JSON.stringify(loop, null, 2));
