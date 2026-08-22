@@ -34,6 +34,13 @@ function sendJson(response, status, body) {
   response.end(JSON.stringify(body));
 }
 
+function setCors(response) {
+  response.setHeader('access-control-allow-origin', process.env.MEND_CONTROL_ORIGIN ?? '*');
+  response.setHeader('access-control-allow-methods', 'GET,POST,OPTIONS');
+  response.setHeader('access-control-allow-headers', 'content-type,x-mend-factory-token');
+  response.setHeader('access-control-max-age', '600');
+}
+
 function sendHtml(response, html) {
   response.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
   response.end(html);
@@ -54,6 +61,12 @@ export function createApp({ telemetry = createTelemetry() } = {}) {
   const registry = createScraperRegistry();
 
   const server = createServer(async (request, response) => {
+    setCors(response);
+    if (request.method === 'OPTIONS') {
+      response.writeHead(204);
+      response.end();
+      return;
+    }
     const url = new URL(request.url, 'http://localhost');
     const requestSpan = telemetry.startSpan(`api.${request.method.toLowerCase()} ${url.pathname}`, {
       'http.request.method': request.method,
@@ -112,6 +125,11 @@ export function createApp({ telemetry = createTelemetry() } = {}) {
       }
 
       if (request.method === 'POST' && url.pathname === '/mend/repair') {
+        const expectedToken = process.env.MEND_FACTORY_TOKEN;
+        if (expectedToken && request.headers['x-mend-factory-token'] !== expectedToken) {
+          sendJson(response, 401, { error: 'missing or invalid factory token' });
+          return;
+        }
         const body = await readJson(request);
         // approve:false exercises the interlock — the repair is still derived and gated,
         // and the reviewer turns it down, so nothing deploys and the dataset stays blocked.
@@ -122,6 +140,7 @@ export function createApp({ telemetry = createTelemetry() } = {}) {
           brokenVersion: body.brokenVersion ?? 'v2',
           approve: body.approve !== false,
           reviewer: body.reviewer ?? 'human-reviewer',
+          versionedLive: body.versionedLive === true,
           telemetry,
         });
         requestSpan.setAttribute('mend.repair.status', latestRepairLoop.status);

@@ -22,7 +22,12 @@ const signalsEl = document.getElementById('signals');
 const noteEl = document.getElementById('readout-note');
 const negEl = document.getElementById('negatives');
 const negNoteEl = document.getElementById('negatives-note');
+const healButton = document.getElementById('heal');
+const healStatus = document.getElementById('heal-status');
+const healOutput = document.getElementById('heal-output');
 const buttons = [...document.querySelectorAll('.vbtn')];
+const FACTORY_TOKEN_KEY = 'mend.factoryToken';
+let factoryUrl = '';
 let refreshing = false;
 
 function demoCookieVersion() {
@@ -163,6 +168,64 @@ function token() {
   return t;
 }
 
+function factoryToken() {
+  let t = sessionStorage.getItem(FACTORY_TOKEN_KEY);
+  if (!t) {
+    t = prompt('Factory token (MEND_FACTORY_TOKEN; leave blank if not configured):') ?? '';
+    if (t) sessionStorage.setItem(FACTORY_TOKEN_KEY, t);
+  }
+  return t;
+}
+
+async function loadFactoryConfig() {
+  try {
+    const res = await fetchWithTimeout('/api/config', { cache: 'no-store' });
+    const payload = await res.json();
+    factoryUrl = String(payload.factoryUrl ?? '').replace(/\/$/, '');
+    if (!factoryUrl) throw new Error('MEND_FACTORY_URL is not set in Vercel');
+    new URL(factoryUrl);
+    healButton.disabled = false;
+    healStatus.innerHTML = `Factory ready at <code>${factoryUrl}</code>.`;
+  } catch (err) {
+    factoryUrl = '';
+    healButton.disabled = true;
+    healStatus.innerHTML = `<span class="warn">Factory unavailable</span> — ${err.message}`;
+  }
+}
+
+async function heal() {
+  if (!factoryUrl) return;
+  const t = factoryToken();
+  healButton.disabled = true;
+  healOutput.hidden = true;
+  healStatus.innerHTML = '<span class="warn">Healing…</span> Detecting, deriving, deploying, and verifying.';
+  try {
+    const headers = { 'content-type': 'application/json' };
+    if (t) headers['x-mend-factory-token'] = t;
+    const res = await fetchWithTimeout(`${factoryUrl}/mend/repair`, {
+      method: 'POST', headers,
+      body: JSON.stringify({ origin: location.origin, healthyVersion: 'v4', brokenVersion: 'v2', versionedLive: true, approve: true, reviewer: 'human-reviewer' }),
+    }, 65000);
+    const payload = await res.json().catch(() => ({}));
+    if (res.status === 401) {
+      sessionStorage.removeItem(FACTORY_TOKEN_KEY);
+      throw new Error('factory token rejected — click Heal again to re-enter it');
+    }
+    if (!res.ok) throw new Error(payload.error ?? `factory returned HTTP ${res.status}`);
+    const detect = payload.steps?.find((step) => step.name === 'detect');
+    const verify = payload.steps?.find((step) => step.name === 'verify');
+    healStatus.innerHTML = `<span class="ok">${payload.status ?? 'REPAIRED'}</span> — verified conformance ${verify?.metrics?.schema_conformance ?? 'n/a'}; MTTR ${verify?.metrics?.mttr_seconds ?? 'n/a'}s.`;
+    healOutput.textContent = JSON.stringify({ status: payload.status, detected: detect?.metrics ?? detect?.message, verified: verify?.metrics ?? verify?.message, changeRequest: payload.changeRequest, softwareChange: payload.softwareChange }, null, 2);
+    healOutput.hidden = false;
+  } catch (err) {
+    healStatus.innerHTML = `<span class="bad">Heal failed</span> — ${err.message}`;
+    healOutput.textContent = 'No repair was published. Check the factory deployment logs and MEND_MERIDIAN_URL.';
+    healOutput.hidden = false;
+  } finally {
+    healButton.disabled = false;
+  }
+}
+
 async function refresh() {
   if (refreshing) return;
   refreshing = true;
@@ -282,6 +345,8 @@ async function renderNegatives(html, baseUrl) {
 
 for (const b of buttons) b.addEventListener('click', () => activate(b.dataset.version));
 refreshButton.addEventListener('click', refresh);
+healButton.addEventListener('click', heal);
+loadFactoryConfig();
 refresh().catch((err) => {
   statusEl.innerHTML = `<span class="bad">Control room failed to start: ${err.message}</span>`;
   refreshButton.disabled = false;

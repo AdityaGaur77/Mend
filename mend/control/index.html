@@ -41,6 +41,18 @@
     </div>
     </div>
 
+    <h2>Repair — run the Mend factory</h2>
+    <div class="panel repair-panel">
+      <div class="status-row">
+        <button class="heal" id="heal" type="button" disabled>Heal with Mend factory</button>
+        <p class="status" id="heal-status" aria-live="polite">Checking factory configuration…</p>
+      </div>
+      <pre class="repair-output" id="heal-output" hidden></pre>
+      <p class="note">The factory independently detects the break, derives and gates a repair,
+        verifies the result, and reports the change request. This button runs the real repair API.
+      </p>
+    </div>
+
     <h2>Signals — read live from <code>/pipeline</code></h2>
     <div class="panel">
       <table>
