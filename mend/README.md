@@ -232,9 +232,9 @@ module the test suite asserts against (`src/extract-core.mjs`, parity enforced b
 |---|---|
 | `EDGE_CONFIG` | auto-injected when you connect an Edge Config store to the project |
 | `EDGE_CONFIG_ID` | `ecfg_…` — only needed if it cannot be parsed from `EDGE_CONFIG` |
-| `VERCEL_API_TOKEN` | writes the pointer |
+| `MEND_VERCEL_API_TOKEN` | writes the pointer |
 | `CONTROL_TOKEN` | the shared secret the control room prompts for |
-| `VERCEL_TEAM_ID` | only if the Edge Config store belongs to a team |
+| `MEND_VERCEL_TEAM_ID` | only if the Edge Config store belongs to a team |
 
 Reads use plain `fetch` against the Edge Config endpoint, so **no `@vercel/edge-config`
 dependency is added to this repo.**

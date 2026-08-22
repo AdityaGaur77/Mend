@@ -38,7 +38,7 @@ function edgeConfigId() {
 function missingReason() {
   if (!process.env.EDGE_CONFIG) return 'EDGE_CONFIG is not set — connect an Edge Config store to this project';
   if (!edgeConfigId()) return 'EDGE_CONFIG is set but its id could not be parsed';
-  if (!process.env.VERCEL_API_TOKEN) return 'VERCEL_API_TOKEN is not set — needed to write the pointer';
+  if (!process.env.MEND_VERCEL_API_TOKEN) return 'MEND_VERCEL_API_TOKEN is not set — needed to write the pointer';
   if (!process.env.CONTROL_TOKEN) return 'CONTROL_TOKEN is not set — refusing to expose an unauthenticated switch';
   return null;
 }
@@ -56,11 +56,11 @@ async function readVersion() {
 
 async function writeVersion(version) {
   const id = edgeConfigId();
-  const team = process.env.VERCEL_TEAM_ID ? `?teamId=${encodeURIComponent(process.env.VERCEL_TEAM_ID)}` : '';
+  const team = process.env.MEND_VERCEL_TEAM_ID ? `?teamId=${encodeURIComponent(process.env.MEND_VERCEL_TEAM_ID)}` : '';
   const res = await fetch(`https://api.vercel.com/v1/edge-config/${id}/items${team}`, {
     method: 'PATCH',
     headers: {
-      Authorization: `Bearer ${process.env.VERCEL_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.MEND_VERCEL_API_TOKEN}`,
       'content-type': 'application/json',
     },
     body: JSON.stringify({ items: [{ operation: 'upsert', key: KEY, value: version }] }),
