@@ -1,0 +1,15 @@
+name: Keep demo factory awake
+
+on:
+  schedule:
+    # Render Free sleeps after 15 minutes without an inbound request. Keep this
+    # comfortably below that threshold for the hackathon demo.
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wake Mend factory
+        run: curl --fail --silent --show-error --max-time 30 https://mend-29j3.onrender.com/health
