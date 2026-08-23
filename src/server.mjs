@@ -58,7 +58,7 @@ export function createApp({ telemetry = createTelemetry() } = {}) {
   let latestRepairLoop = null;
   let previousHealthy = {};
   let meridianRunners = null;
-  const registry = createScraperRegistry();
+  let registry = createScraperRegistry();
 
   const server = createServer(async (request, response) => {
     setCors(response);
@@ -131,6 +131,9 @@ export function createApp({ telemetry = createTelemetry() } = {}) {
           return;
         }
         const body = await readJson(request);
+        // The public hackathon demo can replay the same v2 -> heal story. Reset only when
+        // explicitly requested; normal factory callers retain the auditable registry history.
+        if (body.reset === true) registry = createScraperRegistry();
         // approve:false exercises the interlock — the repair is still derived and gated,
         // and the reviewer turns it down, so nothing deploys and the dataset stays blocked.
         latestRepairLoop = await runRepairLoop({

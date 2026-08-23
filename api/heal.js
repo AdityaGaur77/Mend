@@ -26,6 +26,7 @@ export default async function handler(request, response) {
         healthyVersion: body.healthyVersion ?? 'v4',
         brokenVersion: body.brokenVersion ?? 'v2',
         versionedLive: body.versionedLive !== false,
+        reset: body.reset !== false,
         approve: body.approve !== false,
         reviewer: body.reviewer ?? 'demo-operator',
       }),

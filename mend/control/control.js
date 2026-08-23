@@ -202,7 +202,7 @@ async function heal() {
   try {
     const res = await fetchWithTimeout(factoryUrl, {
       method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ origin: location.origin, healthyVersion: 'v4', brokenVersion: 'v2', versionedLive: true, approve: true, reviewer: 'human-reviewer' }),
+      body: JSON.stringify({ origin: location.origin, healthyVersion: 'v4', brokenVersion: 'v2', versionedLive: true, reset: true, approve: true, reviewer: 'demo-operator' }),
     }, 65000);
     const payload = await res.json().catch(() => ({}));
     if (res.status === 401) {
