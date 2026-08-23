@@ -4,7 +4,7 @@ on:
   schedule:
     # Render Free sleeps after 15 minutes without an inbound request. Keep this
     # comfortably below that threshold for the hackathon demo.
-    - cron: "*/10 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
