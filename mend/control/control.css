@@ -62,5 +62,12 @@ td.num { font-variant-numeric: tabular-nums; }
   border-radius: 6px; padding: 12px; margin: 14px 0 0; overflow: auto;
   white-space: pre-wrap; font: inherit; font-size: .78rem;
 }
+.evidence-figure { margin: 0; }
+.evidence-figure img {
+  display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain;
+  object-position: top left; background: #0b0f14; border: 1px solid var(--line);
+  border-radius: 6px;
+}
+.evidence-figure figcaption { color: var(--ink-soft); font-size: .78rem; margin-top: 12px; line-height: 1.7; }
 .note { color: var(--ink-dim); font-size: .78rem; margin-top: 10px; line-height: 1.7; }
 code { background: #1c232c; border-radius: 4px; padding: 1px 5px; color: var(--ink-soft); }
