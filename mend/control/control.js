@@ -212,12 +212,12 @@ async function heal() {
       throw new Error('factory token rejected — click Heal again to re-enter it');
     }
     if (!res.ok) throw new Error(payload.error ?? `factory returned HTTP ${res.status}`);
-    const detect = payload.steps?.find((step) => step.name === 'detect');
-    const verify = payload.steps?.find((step) => step.name === 'verify');
-    const verified = payload.status === 'REPAIRED' && verify?.metrics?.schema_conformance >= 1;
+    const detect = payload.steps?.find((step) => step.step === 'detect');
+    const verify = payload.steps?.find((step) => step.step === 'verify');
+    const verified = payload.status === 'REPAIRED' && verify?.verified === true && verify?.signals?.schema_conformance >= 1;
     if (!verified) throw new Error('factory completed without a verified healthy result');
     healStatus.innerHTML = '<span class="ok">REPAIRED</span> — scraper verified; restoring the visible website…';
-    healOutput.textContent = JSON.stringify({ status: payload.status, detected: detect?.metrics ?? detect?.message, verified: verify?.metrics ?? verify?.message, changeRequest: payload.changeRequest, softwareChange: payload.softwareChange }, null, 2);
+    healOutput.textContent = JSON.stringify({ status: payload.status, detected: detect?.signals, verified: verify?.signals, changeRequest: payload.changeRequest, softwareChange: payload.softwareChange }, null, 2);
     healOutput.hidden = false;
     // The factory heals the data contract first. Only after independent verification do we
     // restore the visible Meridian experience, so the demo has an unmistakable before/after.
