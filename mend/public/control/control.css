@@ -50,5 +50,17 @@ td.num { font-variant-numeric: tabular-nums; }
 .refresh:hover { filter: brightness(1.08); }
 .refresh:disabled { opacity: .55; cursor: wait; }
 .open-pipeline { color: var(--info); font-size: .78rem; }
+.heal {
+  color: #08120a; background: var(--ok); border: 0; border-radius: 6px;
+  padding: 9px 13px; font: inherit; font-weight: 700; cursor: pointer;
+}
+.heal:hover:not(:disabled) { filter: brightness(1.08); }
+.heal:disabled { opacity: .55; cursor: not-allowed; }
+.repair-panel .status { margin: 0; }
+.repair-output {
+  color: var(--ink-soft); background: #0b0f14; border: 1px solid var(--line);
+  border-radius: 6px; padding: 12px; margin: 14px 0 0; overflow: auto;
+  white-space: pre-wrap; font: inherit; font-size: .78rem;
+}
 .note { color: var(--ink-dim); font-size: .78rem; margin-top: 10px; line-height: 1.7; }
 code { background: #1c232c; border-radius: 4px; padding: 1px 5px; color: var(--ink-soft); }

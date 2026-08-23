@@ -6,7 +6,7 @@
 // deterministic (no timestamps, no build ids) so a rebuild on unchanged input
 // produces no diff, which is what makes `git status` a useful check.
 
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -61,5 +61,10 @@ const data = JSON.parse(read('data/programs.json'));
 for (const version of Object.keys(VERSIONS)) {
   const pages = buildVersion(version, data);
   console.log(`built ${version.padEnd(3)} ${String(pages).padStart(2)} pages  (${VERSIONS[version].generator})`);
+}
+// The control room is deployed from public/ by Vercel, so keep its browser assets
+// synchronized with the source files whenever the site build runs.
+for (const file of ['index.html', 'control.css', 'control.js']) {
+  copyFileSync(join(root, 'control', file), join(root, 'public', 'control', file));
 }
 console.log(`\n${data.programs.length} programmes · versions/ rebuilt · run "npm run site:activate v1" to publish`);
