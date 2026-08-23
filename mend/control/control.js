@@ -160,19 +160,19 @@ function setLive(version, configured) {
 }
 
 function token() {
-  let t = sessionStorage.getItem(TOKEN_KEY);
+  let t = localStorage.getItem(TOKEN_KEY);
   if (!t) {
     t = prompt('Control token (CONTROL_TOKEN from the Vercel project):') ?? '';
-    if (t) sessionStorage.setItem(TOKEN_KEY, t);
+    if (t) localStorage.setItem(TOKEN_KEY, t);
   }
   return t;
 }
 
 function factoryToken() {
-  let t = sessionStorage.getItem(FACTORY_TOKEN_KEY);
+  let t = localStorage.getItem(FACTORY_TOKEN_KEY);
   if (!t) {
     t = prompt('Factory token (MEND_FACTORY_TOKEN; leave blank if not configured):') ?? '';
-    if (t) sessionStorage.setItem(FACTORY_TOKEN_KEY, t);
+    if (t) localStorage.setItem(FACTORY_TOKEN_KEY, t);
   }
   return t;
 }
@@ -208,7 +208,7 @@ async function heal() {
     }, 65000);
     const payload = await res.json().catch(() => ({}));
     if (res.status === 401) {
-      sessionStorage.removeItem(FACTORY_TOKEN_KEY);
+      localStorage.removeItem(FACTORY_TOKEN_KEY);
       throw new Error('factory token rejected — click Heal again to re-enter it');
     }
     if (!res.ok) throw new Error(payload.error ?? `factory returned HTTP ${res.status}`);
@@ -289,7 +289,7 @@ async function activate(version) {
       body: JSON.stringify({ version }),
     });
     if (res.status === 401) {
-      sessionStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(TOKEN_KEY);
       throw new Error('token rejected — press again to re-enter it');
     }
     if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error ?? `HTTP ${res.status}`);
