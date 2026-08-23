@@ -28,6 +28,7 @@ const healOutput = document.getElementById('heal-output');
 const buttons = [...document.querySelectorAll('.vbtn')];
 const FACTORY_TOKEN_KEY = 'mend.factoryToken';
 let factoryUrl = '';
+let publicDemo = false;
 let refreshing = false;
 
 function demoCookieVersion() {
@@ -181,11 +182,11 @@ async function loadFactoryConfig() {
   try {
     const res = await fetchWithTimeout('/api/config', { cache: 'no-store' });
     const payload = await res.json();
-    factoryUrl = String(payload.factoryUrl ?? '').replace(/\/$/, '');
-    if (!factoryUrl) throw new Error('MEND_FACTORY_URL is not set in Vercel');
-    new URL(factoryUrl);
+    factoryUrl = payload.factoryEnabled ? '/api/heal' : '';
+    publicDemo = payload.publicDemo === true;
+    if (!factoryUrl) throw new Error('MEND_FACTORY_TOKEN is not set in Vercel');
     healButton.disabled = false;
-    healStatus.innerHTML = `Factory ready at <code>${factoryUrl}</code>.`;
+    healStatus.innerHTML = 'Factory ready — demo operators do not need a token.';
   } catch (err) {
     factoryUrl = '';
     healButton.disabled = true;
@@ -195,15 +196,12 @@ async function loadFactoryConfig() {
 
 async function heal() {
   if (!factoryUrl) return;
-  const t = factoryToken();
   healButton.disabled = true;
   healOutput.hidden = true;
   healStatus.innerHTML = '<span class="warn">Healing…</span> Detecting, deriving, deploying, and verifying.';
   try {
-    const headers = { 'content-type': 'application/json' };
-    if (t) headers['x-mend-factory-token'] = t;
-    const res = await fetchWithTimeout(`${factoryUrl}/mend/repair`, {
-      method: 'POST', headers,
+    const res = await fetchWithTimeout(factoryUrl, {
+      method: 'POST', headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ origin: location.origin, healthyVersion: 'v4', brokenVersion: 'v2', versionedLive: true, approve: true, reviewer: 'human-reviewer' }),
     }, 65000);
     const payload = await res.json().catch(() => ({}));
@@ -277,15 +275,15 @@ async function refresh() {
 }
 
 async function activate(version) {
-  const t = token();
-  if (!t) return;
+  const t = publicDemo ? '' : token();
+  if (!publicDemo && !t) return;
   statusEl.textContent = `Switching to ${version}…`;
   refreshButton.disabled = true;
   buttons.forEach((b) => (b.disabled = true));
   try {
     const res = await fetchWithTimeout('/api/activate', {
       method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-control-token': t },
+      headers: { 'content-type': 'application/json', ...(t ? { 'x-control-token': t } : {}) },
       body: JSON.stringify({ version }),
     });
     if (res.status === 401) {

@@ -39,7 +39,7 @@ function missingReason() {
   if (!process.env.EDGE_CONFIG) return 'EDGE_CONFIG is not set — connect an Edge Config store to this project';
   if (!edgeConfigId()) return 'EDGE_CONFIG is set but its id could not be parsed';
   if (!process.env.MEND_VERCEL_API_TOKEN) return 'MEND_VERCEL_API_TOKEN is not set — needed to write the pointer';
-  if (!process.env.CONTROL_TOKEN) return 'CONTROL_TOKEN is not set — refusing to expose an unauthenticated switch';
+  if (!process.env.CONTROL_TOKEN && process.env.MEND_PUBLIC_DEMO !== 'true') return 'CONTROL_TOKEN is not set — refusing to expose an unauthenticated switch';
   return null;
 }
 
@@ -82,6 +82,7 @@ export default async function handler(req, res) {
       version: browserVersion ?? (await readVersion()) ?? null,
       reason: browserVersion ? 'Using the browser demo switch' : reason,
       versions: VERSION_IDS,
+      publicDemo: process.env.MEND_PUBLIC_DEMO === 'true',
     });
   }
 
@@ -93,13 +94,13 @@ export default async function handler(req, res) {
   // The cookie fallback keeps the hackathon demo usable when Edge Config or the
   // Vercel API token is unavailable. It is still protected by CONTROL_TOKEN and
   // only affects this browser for one hour; production deployments use Edge Config.
-  if (!process.env.CONTROL_TOKEN) {
+  if (!process.env.CONTROL_TOKEN && process.env.MEND_PUBLIC_DEMO !== 'true') {
     return res.status(503).json({ error: reason ?? 'CONTROL_TOKEN is not set' });
   }
 
   // Constant-ish time compare is overkill for a demo switch, but a plain !== leaks
   // nothing useful here either — the token is single-purpose and rotatable.
-  if (req.headers['x-control-token'] !== process.env.CONTROL_TOKEN) {
+  if (process.env.MEND_PUBLIC_DEMO !== 'true' && req.headers['x-control-token'] !== process.env.CONTROL_TOKEN) {
     return res.status(401).json({ error: 'bad or missing x-control-token' });
   }
 
