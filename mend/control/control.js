@@ -214,9 +214,15 @@ async function heal() {
     if (!res.ok) throw new Error(payload.error ?? `factory returned HTTP ${res.status}`);
     const detect = payload.steps?.find((step) => step.name === 'detect');
     const verify = payload.steps?.find((step) => step.name === 'verify');
-    healStatus.innerHTML = `<span class="ok">${payload.status ?? 'REPAIRED'}</span> — verified conformance ${verify?.metrics?.schema_conformance ?? 'n/a'}; MTTR ${verify?.metrics?.mttr_seconds ?? 'n/a'}s.`;
+    const verified = payload.status === 'REPAIRED' && verify?.metrics?.schema_conformance >= 1;
+    if (!verified) throw new Error('factory completed without a verified healthy result');
+    healStatus.innerHTML = '<span class="ok">REPAIRED</span> — scraper verified; restoring the visible website…';
     healOutput.textContent = JSON.stringify({ status: payload.status, detected: detect?.metrics ?? detect?.message, verified: verify?.metrics ?? verify?.message, changeRequest: payload.changeRequest, softwareChange: payload.softwareChange }, null, 2);
     healOutput.hidden = false;
+    // The factory heals the data contract first. Only after independent verification do we
+    // restore the visible Meridian experience, so the demo has an unmistakable before/after.
+    await activate('v4');
+    healStatus.innerHTML = '<span class="ok">HEALED</span> — scraper repaired, verified at 100%, and website restored to <strong>v4</strong>.';
   } catch (err) {
     healStatus.innerHTML = `<span class="bad">Heal failed</span> — ${err.message}`;
     healOutput.textContent = 'No repair was published. Check the factory deployment logs and MEND_MERIDIAN_URL.';
